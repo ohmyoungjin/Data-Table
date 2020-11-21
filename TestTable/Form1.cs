@@ -49,7 +49,7 @@ namespace TestTable
         private void button1_Click(object sender, EventArgs e) //버튼 1번을 클릭하면 실행하는 함수. 조회버튼으로 쓰이고 있다.    
         {
             MySqlConnection connection = new MySqlConnection("Server=" + ServerName + ";Database=" + DataBase + ";Uid=" + userid + ";Pwd=" + userpw);
-            string SQL = "select * from student"; //조회할 쿼리문
+            string SQL = "select * from grade"; //조회할 쿼리문
             DataTable dataTable = new DataTable(); //데이터 테이블 생성
 
 
@@ -68,7 +68,7 @@ namespace TestTable
             No = Convert.ToInt32(this.dataGridView1.Rows[isi].Cells[2].Value.ToString());
             Name = this.dataGridView1.Rows[isi].Cells[3].Value.ToString();
             Score = this.dataGridView1.Rows[isi].Cells[4].Value.ToString();
-            result = mysql.Sql("INSERT INTO student (grade,class,no,name,score) VALUES('" + Grade + "','" + Cla + "'," + No + ",'" + Name + "','" + Score + "')");
+            result = mysql.Sql("INSERT INTO grade (grade,class,no,name,score) VALUES('" + Grade + "','" + Cla + "'," + No + ",'" + Name + "','" + Score + "')");
            /* MessageBox.Show(name); 값이 제대로 넘어왔는지 확인하는 부분.
             MessageBox.Show(age);
              if (result == true)
@@ -92,7 +92,7 @@ namespace TestTable
             No = Convert.ToInt32(this.dataGridView1.Rows[isi].Cells[2].Value.ToString());
             Name = this.dataGridView1.Rows[isi].Cells[3].Value.ToString();
             Score = this.dataGridView1.Rows[isi].Cells[4].Value.ToString();
-            result = mysql.Sql("update student set grade = '"+Grade+"' ,class = '"+Cla+"'," +
+            result = mysql.Sql("update grade set grade = '"+Grade+"' ,class = '"+Cla+"'," +
                                 "no = "+No+" , score = '"+Score+"'  WHERE Name = '" + Name + "'");
 
             /*MessageBox.Show(name);
@@ -117,7 +117,7 @@ namespace TestTable
             No = Convert.ToInt32(this.dataGridView1.Rows[isi].Cells[2].Value.ToString());
             Name = this.dataGridView1.Rows[isi].Cells[3].Value.ToString();
             Score = this.dataGridView1.Rows[isi].Cells[4].Value.ToString();
-            result = mysql.Sql("DELETE FROM STUDENT WHERE Name = '" + Name + "'");
+            result = mysql.Sql("DELETE FROM grade WHERE Name = '" + Name + "'");
             dt.AcceptChanges();//테이블데이터에 대한 커밋부분.
             Boolean ab = dataGridView1.AllowUserToDeleteRows;//행을 삭제할 수 있는지 확인 설정해주는 부분
             if (ab == true)
